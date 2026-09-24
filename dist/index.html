@@ -1438,7 +1438,7 @@
         grid-template-columns: minmax(0, 1fr) minmax(300px, 0.45fr);
         align-items: end;
         gap: 72px;
-        margin-bottom: 38px;
+        margin-bottom: 46px;
       }
 
       .process-title {
@@ -1454,49 +1454,98 @@
         line-height: 1.75;
       }
 
-      .process-ai-rail {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr);
-        align-items: center;
-        gap: 22px;
-        margin-bottom: 30px;
-        padding: 15px 18px;
-        border: 1px solid rgba(216, 180, 254, 0.17);
-        border-radius: 18px;
-        background: linear-gradient(100deg, rgba(165, 180, 252, 0.065), rgba(216, 180, 254, 0.04), rgba(244, 114, 182, 0.035));
+      .process-board {
+        position: relative;
+        overflow: hidden;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(165, 180, 252, 0.08), transparent 32%),
+          radial-gradient(circle at 88% 100%, rgba(244, 114, 182, 0.07), transparent 30%),
+          rgba(12, 12, 15, 0.76);
       }
 
-      .process-ai-label {
-        padding: 7px 10px;
-        border-radius: 999px;
-        background: linear-gradient(95deg, var(--indigo), var(--purple), var(--pink));
-        color: #0a0a0c;
+      .process-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, #000, transparent 82%);
+      }
+
+      .process-legend {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: auto repeat(3, minmax(0, max-content));
+        align-items: center;
+        justify-content: start;
+        gap: 12px;
+        margin-bottom: 18px;
+        padding: 8px 6px 14px;
+      }
+
+      .process-legend-label {
+        margin-right: 6px;
+        color: #7d7d87;
         font-family: var(--mono);
         font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
 
-      .process-ai-flow {
-        display: flex;
+      .process-legend-item {
+        display: inline-flex;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 8px 12px;
-        color: #aaaab4;
+        gap: 7px;
+        color: #a7a7b0;
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 10px;
       }
 
-      .process-ai-flow span:not(:last-child)::after {
-        content: "→";
-        margin-left: 12px;
-        color: #575762;
+      .process-role {
+        min-width: 28px;
+        min-height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 7px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .process-role--me {
+        color: #efeff3;
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .process-role--ai {
+        border-color: rgba(216, 180, 254, 0.3);
+        color: var(--purple);
+        background: rgba(216, 180, 254, 0.075);
+      }
+
+      .process-role--team {
+        border-color: rgba(244, 114, 182, 0.25);
+        color: #f5a7cc;
+        background: rgba(244, 114, 182, 0.06);
       }
 
       .process-list {
+        position: relative;
+        z-index: 1;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
+        gap: 12px;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -1505,32 +1554,33 @@
 
       .process-card {
         position: relative;
-        min-height: 320px;
+        min-height: 440px;
         overflow: hidden;
-        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        padding: 22px;
         border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(145deg, rgba(27, 27, 32, 0.94), rgba(15, 15, 18, 0.96));
+        border-radius: 22px;
+        background: linear-gradient(155deg, rgba(29, 29, 35, 0.92), rgba(14, 14, 17, 0.96));
         counter-increment: process;
         transition: transform 260ms cubic-bezier(.22, 1, .36, 1), border-color 260ms ease;
       }
 
       .process-card::before {
         content: "0" counter(process);
-        display: block;
-        color: #777781;
+        color: #8b8b95;
         font-family: var(--mono);
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 0.08em;
       }
 
       .process-card::after {
         content: "";
         position: absolute;
-        right: -72px;
-        bottom: -98px;
-        width: 210px;
-        height: 210px;
+        right: -92px;
+        bottom: -112px;
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
         background: radial-gradient(circle, rgba(216, 180, 254, 0.2), rgba(244, 114, 182, 0.03) 58%, transparent 70%);
         opacity: 0;
@@ -1539,8 +1589,8 @@
       }
 
       .process-card:hover {
-        border-color: #50505a;
-        transform: translateY(-7px);
+        border-color: rgba(216, 180, 254, 0.34);
+        transform: translateY(-5px);
       }
 
       .process-card:hover::after {
@@ -1548,55 +1598,138 @@
         transform: scale(1);
       }
 
-      .process-card--ai {
-        border-color: rgba(216, 180, 254, 0.19);
-        background: linear-gradient(145deg, rgba(32, 28, 39, 0.96), rgba(16, 16, 20, 0.96));
+      .process-card:nth-child(3),
+      .process-card:nth-child(4) {
+        border-color: rgba(216, 180, 254, 0.17);
       }
 
-      .process-card--ai::before {
+      .process-card:nth-child(3)::before,
+      .process-card:nth-child(4)::before {
         color: var(--purple);
       }
 
-      .process-badge {
+      .process-en {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 6px 8px;
-        border: 1px solid rgba(216, 180, 254, 0.22);
-        border-radius: 999px;
-        background: rgba(216, 180, 254, 0.07);
-        color: var(--purple);
+        top: 23px;
+        right: 22px;
+        color: #5f5f69;
         font-family: var(--mono);
         font-size: 9px;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.13em;
       }
 
       .process-card h3 {
-        margin: 92px 0 14px;
-        font-size: 24px;
+        margin: 34px 0 22px;
+        font-size: 23px;
         font-weight: 550;
         letter-spacing: -0.035em;
       }
 
-      .process-card p {
+      .process-steps {
         position: relative;
         z-index: 1;
+        display: grid;
+        gap: 9px;
         margin: 0;
-        color: #92929c;
-        font-size: 14px;
-        line-height: 1.7;
+        padding: 0;
+        list-style: none;
+      }
+
+      .process-step {
+        min-height: 86px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .process-step-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 7px;
+      }
+
+      .process-step strong {
+        color: #e3e3e8;
+        font-size: 12px;
+        font-weight: 550;
+      }
+
+      .process-step p {
+        margin: 0;
+        color: #777781;
+        font-size: 11px;
+        line-height: 1.55;
+      }
+
+      .process-check {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 16px;
+        color: #9b8aac;
+        font-family: var(--mono);
+        font-size: 9px;
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+      }
+
+      .process-check::before {
+        content: "CHECK";
+        padding: 4px 6px;
+        border-radius: 999px;
+        background: rgba(216, 180, 254, 0.08);
+        color: var(--purple);
+        font-size: 8px;
+      }
+
+      .process-track {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: auto repeat(4, 1fr) auto;
+        align-items: center;
+        gap: 0;
+        margin: 22px 8px 3px;
+        color: #5d5d67;
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+      }
+
+      .process-track::before {
+        content: "";
+        position: absolute;
+        right: 54px;
+        left: 54px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(165, 180, 252, 0.25), rgba(216, 180, 254, 0.45), rgba(244, 114, 182, 0.25));
+      }
+
+      .process-track-dot {
+        position: relative;
+        z-index: 1;
+        width: 9px;
+        height: 9px;
+        justify-self: center;
+        border: 2px solid #17171b;
+        border-radius: 50%;
+        background: var(--purple);
+        box-shadow: 0 0 0 1px rgba(216, 180, 254, 0.3);
       }
 
       .contact-section {
         position: relative;
         isolation: isolate;
         width: min(calc(100% - 56px), 1280px);
-        min-height: 570px;
+        min-height: 510px;
         margin: 34px auto 28px;
         overflow: hidden;
-        display: grid;
-        place-items: center;
-        padding: 90px 48px;
+        padding: 58px;
         border: 1px solid rgba(255, 255, 255, 0.13);
         border-radius: 36px;
         background:
@@ -1619,20 +1752,27 @@
       }
 
       .contact-inner {
-        max-width: 940px;
-        text-align: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.72fr);
+        align-items: center;
+        gap: clamp(58px, 8vw, 118px);
+        min-height: 390px;
       }
 
       .contact-section .section-kicker {
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .contact-title {
-        font-size: clamp(3.4rem, 7.2vw, 7rem);
-        line-height: 0.98;
+        max-width: 760px;
+        font-size: clamp(3.1rem, 5.4vw, 5.5rem);
+        line-height: 1;
       }
 
       .contact-title span {
+        display: block;
+        width: max-content;
+        max-width: 100%;
         background: linear-gradient(95deg, var(--indigo), var(--purple) 52%, var(--pink));
         background-clip: text;
         -webkit-background-clip: text;
@@ -1640,19 +1780,26 @@
       }
 
       .contact-copy {
-        max-width: 600px;
-        margin: 30px auto 0;
+        max-width: 610px;
+        margin: 26px 0 0;
         color: #aaaab4;
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.75;
       }
 
+      .contact-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 11px;
+        margin-top: 34px;
+      }
+
       .contact-link {
-        min-height: 58px;
+        min-height: 54px;
         display: inline-flex;
         align-items: center;
         gap: 18px;
-        margin-top: 38px;
         padding: 0 27px;
         border-radius: 17px;
         background: #fff;
@@ -1663,10 +1810,35 @@
         transition: transform 220ms ease, box-shadow 220ms ease;
       }
 
+      .contact-copy-button {
+        min-height: 54px;
+        padding: 0 23px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 17px;
+        background: rgba(255, 255, 255, 0.035);
+        color: #d2d2d8;
+        font-family: var(--mono);
+        font-size: 12px;
+        cursor: pointer;
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .contact-link:hover,
+      .contact-link:focus-visible,
+      .contact-copy-button:hover,
+      .contact-copy-button:focus-visible {
+        transform: translateY(-3px);
+      }
+
       .contact-link:hover,
       .contact-link:focus-visible {
-        transform: translateY(-3px);
         box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+      }
+
+      .contact-copy-button:hover,
+      .contact-copy-button:focus-visible {
+        border-color: rgba(216, 180, 254, 0.35);
+        background: rgba(216, 180, 254, 0.07);
       }
 
       .contact-link span {
@@ -1676,6 +1848,58 @@
 
       .contact-link:hover span {
         transform: translate(3px, -3px);
+      }
+
+      .contact-copy-status {
+        min-height: 20px;
+        margin: 10px 0 0;
+        color: #8e8e98;
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      .contact-details {
+        display: grid;
+        gap: 11px;
+        margin: 0;
+      }
+
+      .contact-detail {
+        min-height: 76px;
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        transition: border-color 220ms ease, transform 220ms ease, background 220ms ease;
+      }
+
+      .contact-detail--link:hover,
+      .contact-detail--link:focus-within {
+        border-color: rgba(216, 180, 254, 0.3);
+        background: rgba(216, 180, 254, 0.055);
+        transform: translateX(4px);
+      }
+
+      .contact-detail dt {
+        color: #71717b;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      .contact-detail dd {
+        margin: 0;
+        color: #e4e4e9;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .contact-detail a {
+        color: inherit;
       }
 
       .site-footer {
@@ -1905,7 +2129,13 @@
 
         .contact-section {
           width: min(calc(100% - 40px), 680px);
-          min-height: 500px;
+          min-height: 0;
+          padding: 48px;
+        }
+
+        .contact-inner {
+          grid-template-columns: 1fr;
+          gap: 44px;
         }
 
         .site-footer {
@@ -2149,45 +2379,69 @@
         }
 
         .process-card {
-          min-height: 250px;
-          padding: 24px;
+          min-height: 410px;
+          padding: 22px;
         }
 
         .process-card h3 {
-          margin-top: 60px;
+          margin-top: 32px;
         }
 
-        .process-ai-rail {
-          grid-template-columns: 1fr;
-          gap: 12px;
-          padding: 16px;
+        .process-board {
+          padding: 10px;
+          border-radius: 24px;
         }
 
-        .process-ai-label {
-          width: max-content;
-        }
-
-        .process-ai-flow {
+        .process-legend {
+          display: flex;
           align-items: flex-start;
-          flex-direction: column;
-          gap: 8px;
+          flex-wrap: wrap;
+          padding: 10px 6px 14px;
         }
 
-        .process-ai-flow span:not(:last-child)::after {
-          content: "";
-          margin: 0;
+        .process-legend-label {
+          width: 100%;
+          margin-bottom: 2px;
+        }
+
+        .process-track {
+          display: none;
         }
 
         .contact-section {
           width: calc(100% - 30px);
-          min-height: 510px;
+          min-height: 0;
           margin-top: 12px;
-          padding: 64px 22px;
+          padding: 42px 24px 26px;
           border-radius: 26px;
         }
 
         .contact-title {
-          font-size: clamp(3rem, 15vw, 4.35rem);
+          font-size: clamp(2.65rem, 13vw, 4rem);
+        }
+
+        .contact-inner {
+          gap: 34px;
+        }
+
+        .contact-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .contact-link,
+        .contact-copy-button {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .contact-detail {
+          grid-template-columns: 72px 1fr;
+          padding: 14px;
+        }
+
+        .contact-detail dd {
+          overflow-wrap: anywhere;
         }
 
         .site-footer {
@@ -2597,51 +2851,122 @@
         <header class="process-heading">
           <div>
             <p class="section-kicker">方法 · AI 增强的 UI/UX 流程</p>
-            <h2 class="process-title" id="process-title">从真实问题，到<em>可交付体验</em>。</h2>
+            <h2 class="process-title" id="process-title">从复杂问题，到<br><em>可以上线的体验</em>。</h2>
           </div>
-          <p class="process-summary">AI 贯穿每个阶段，负责加速归纳、扩展与生成；我负责理解场景、判断方向、验证方案，并把体验推进到真正可实现。</p>
+          <p class="process-summary">AI 不替我做设计判断。它负责加速材料整理、方案探索与原型生成；我负责定义目标、做出取舍、验证质量，并推动方案真正落地。</p>
         </header>
 
-        <div class="process-ai-rail" aria-label="AI 在工作流程中的应用">
-          <span class="process-ai-label">AI 加速层</span>
-          <div class="process-ai-flow">
-            <span>资料归纳</span>
-            <span>洞察聚类</span>
-            <span>方案扩展</span>
-            <span>原型与交付</span>
+        <div class="process-board">
+          <div class="process-legend" aria-label="流程角色说明">
+            <span class="process-legend-label">协作角色</span>
+            <span class="process-legend-item"><span class="process-role process-role--me">我</span>方向与判断</span>
+            <span class="process-legend-item"><span class="process-role process-role--ai">AI</span>归纳与扩展</span>
+            <span class="process-legend-item"><span class="process-role process-role--team">共创</span>验证与交付</span>
+          </div>
+
+          <ol class="process-list">
+            <li class="process-card">
+              <span class="process-en">DISCOVER</span>
+              <h3>理解问题</h3>
+              <ul class="process-steps">
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--me">我</span><strong>对齐业务目标</strong></div>
+                  <p>访谈、数据、现状与约束一起看，不急着跳进界面。</p>
+                </li>
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--ai">AI</span><strong>归纳研究信号</strong></div>
+                  <p>整理材料，提取重复模式、矛盾与潜在机会。</p>
+                </li>
+              </ul>
+              <div class="process-check">业务 + 用户 · 确认问题边界</div>
+            </li>
+            <li class="process-card">
+              <span class="process-en">DEFINE</span>
+              <h3>定义体验</h3>
+              <ul class="process-steps">
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--me">我</span><strong>构建关键场景</strong></div>
+                  <p>明确角色、任务、用户旅程与体验成功标准。</p>
+                </li>
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--ai">AI</span><strong>扩展方案假设</strong></div>
+                  <p>对比流程与信息架构，快速暴露遗漏和风险。</p>
+                </li>
+              </ul>
+              <div class="process-check">产品 + 设计 · 确认目标优先级</div>
+            </li>
+            <li class="process-card">
+              <span class="process-en">DESIGN</span>
+              <h3>设计与验证</h3>
+              <ul class="process-steps">
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--me">我</span><strong>建立体验框架</strong></div>
+                  <p>同步推进流程、文案、界面、组件与关键动效。</p>
+                </li>
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--ai">AI</span><strong>生成原型变体</strong></div>
+                  <p>快速补全页面状态和方案分支，用于比较与验证。</p>
+                </li>
+              </ul>
+              <div class="process-check">用户 + 设计 · 用验证持续收敛</div>
+            </li>
+            <li class="process-card">
+              <span class="process-en">DELIVER</span>
+              <h3>交付与迭代</h3>
+              <ul class="process-steps">
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--me">我</span><strong>对齐实现标准</strong></div>
+                  <p>交付高保真原型、组件规范，并跟进设计验收。</p>
+                </li>
+                <li class="process-step">
+                  <div class="process-step-top"><span class="process-role process-role--ai">AI</span><strong>补全交付上下文</strong></div>
+                  <p>整理边界状态、说明与检查清单，减少协作损耗。</p>
+                </li>
+              </ul>
+              <div class="process-check">设计 + 开发 · 确认可实现质量</div>
+            </li>
+          </ol>
+
+          <div class="process-track" aria-hidden="true">
+            <span>PROBLEM</span>
+            <span class="process-track-dot"></span>
+            <span class="process-track-dot"></span>
+            <span class="process-track-dot"></span>
+            <span class="process-track-dot"></span>
+            <span>LAUNCH</span>
           </div>
         </div>
-
-        <ol class="process-list">
-          <li class="process-card">
-            <h3>发现</h3>
-            <p>通过访谈、数据与产品审视理解用户和业务。用 AI 整理材料、提取重复信号，再由我判断真正值得解决的问题。</p>
-          </li>
-          <li class="process-card">
-            <h3>定义</h3>
-            <p>梳理关键场景、用户旅程与优先级，借助 AI 聚类和对比信息，把模糊需求收敛为清晰的体验方向与成功标准。</p>
-          </li>
-          <li class="process-card process-card--ai">
-            <span class="process-badge">AI</span>
-            <h3>设计与验证</h3>
-            <p>同步推进信息架构、流程、文案、界面与动效，用 AI 扩展方案并快速生成原型，通过验证持续收敛体验。</p>
-          </li>
-          <li class="process-card process-card--ai">
-            <span class="process-badge">AI</span>
-            <h3>原型与交付</h3>
-            <p>交付高保真原型、组件状态、设计规范与 AI 上下文文档，和开发共同验证实现，并根据真实反馈持续迭代。</p>
-          </li>
-        </ol>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-inner">
-          <p class="section-kicker">现在 · 可合作</p>
-          <h2 class="contact-title" id="contact-title">需要一位能从 0 到 1 推进的<span>UI/UX 设计师？</span></h2>
-          <p class="contact-copy">把项目背景、目标和时间计划发给我。我们可以从一次简短交流开始，看看如何用全栈 UI/UX 能力与 AI 协作，把想法更快推进成清晰、好用、可交付的产品体验。</p>
-          <a class="contact-link" href="mailto:hello@avery.design">
-            聊聊你的项目 <span aria-hidden="true">↗</span>
-          </a>
+          <div class="contact-main">
+            <p class="section-kicker">联系 · START A PROJECT</p>
+            <h2 class="contact-title" id="contact-title">有复杂问题？<span>一起把它做成</span><span>好用的产品。</span></h2>
+            <p class="contact-copy">如果你正在寻找一位能理解业务、完成 UI/UX 方案，并与开发一起推进落地的设计师，欢迎把项目背景和目标发给我。</p>
+            <div class="contact-actions">
+              <a class="contact-link" href="mailto:hello@avery.design">
+                发送邮件 <span aria-hidden="true">↗</span>
+              </a>
+              <button class="contact-copy-button" type="button" data-copy-email="hello@avery.design">复制邮箱</button>
+            </div>
+            <p class="contact-copy-status" aria-live="polite"></p>
+          </div>
+
+          <dl class="contact-details">
+            <div class="contact-detail contact-detail--link">
+              <dt>邮箱</dt>
+              <dd><a href="mailto:hello@avery.design">hello@avery.design ↗</a></dd>
+            </div>
+            <div class="contact-detail">
+              <dt>工作方式</dt>
+              <dd>新加坡 / 远程协作</dd>
+            </div>
+            <div class="contact-detail">
+              <dt>可提供</dt>
+              <dd>产品体验 · 设计系统 · AI 原型</dd>
+            </div>
+          </dl>
         </div>
       </section>
     </main>
@@ -2757,6 +3082,30 @@
             targetCursorY = 0;
             hero.classList.remove('is-pointer-active');
             scheduleFlowFrame();
+          });
+        }
+
+        const emailCopyButton = document.querySelector('[data-copy-email]');
+        const emailCopyStatus = document.querySelector('.contact-copy-status');
+
+        if (emailCopyButton && emailCopyStatus) {
+          const defaultLabel = emailCopyButton.textContent;
+
+          emailCopyButton.addEventListener('click', async () => {
+            const email = emailCopyButton.dataset.copyEmail;
+
+            try {
+              await navigator.clipboard.writeText(email);
+              emailCopyButton.textContent = '已复制';
+              emailCopyStatus.textContent = `${email} 已复制到剪贴板`;
+
+              window.setTimeout(() => {
+                emailCopyButton.textContent = defaultLabel;
+                emailCopyStatus.textContent = '';
+              }, 2600);
+            } catch (error) {
+              emailCopyStatus.textContent = `请手动复制：${email}`;
+            }
           });
         }
 
