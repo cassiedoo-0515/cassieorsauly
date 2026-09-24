@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="林艾薇是一名独立 UI/UX 设计师，专注于打造清晰、有温度的数字产品与交互体验。"
+      content="林艾薇是一名 AI 驱动的全栈 UI/UX 设计师，覆盖用户研究、产品策略、体验架构、界面设计、交互原型与设计交付。"
     />
     <meta name="theme-color" content="#070708" />
-    <title>林艾薇 — UI/UX 设计师</title>
+    <title>林艾薇 — AI 全栈 UI/UX 设计师</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
@@ -196,6 +196,8 @@
       }
 
       .hero {
+        position: relative;
+        isolation: isolate;
         width: min(calc(100% - 56px), 1280px);
         min-height: 100dvh;
         margin: 0 auto;
@@ -204,6 +206,72 @@
         grid-template-columns: minmax(0, 0.9fr) minmax(540px, 1.1fr);
         align-items: center;
         gap: 34px;
+      }
+
+      .hero-flow {
+        --flow-x: 0px;
+        --flow-y: 0px;
+        position: absolute;
+        inset: 72px -18vw -70px;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        opacity: 0.78;
+        transform: translate3d(var(--flow-x), var(--flow-y), 0);
+        transition: transform 800ms cubic-bezier(.22, 1, .36, 1);
+        mask-image: radial-gradient(ellipse 78% 74% at 52% 45%, #000 30%, rgba(0, 0, 0, 0.78) 58%, transparent 100%);
+        -webkit-mask-image: radial-gradient(ellipse 78% 74% at 52% 45%, #000 30%, rgba(0, 0, 0, 0.78) 58%, transparent 100%);
+      }
+
+      .flow-blob,
+      .flow-ribbon {
+        position: absolute;
+        will-change: transform;
+      }
+
+      .flow-blob {
+        border-radius: 50%;
+        filter: blur(64px);
+        mix-blend-mode: screen;
+      }
+
+      .flow-blob--a {
+        top: 4%;
+        left: 3%;
+        width: min(46vw, 620px);
+        aspect-ratio: 1;
+        background: radial-gradient(circle at 44% 44%, rgba(165, 180, 252, 0.28), rgba(116, 98, 220, 0.14) 42%, transparent 72%);
+        animation: flow-a 15s ease-in-out infinite alternate;
+      }
+
+      .flow-blob--b {
+        top: 7%;
+        right: 0;
+        width: min(50vw, 680px);
+        aspect-ratio: 1;
+        background: radial-gradient(circle at 54% 48%, rgba(244, 114, 182, 0.21), rgba(216, 180, 254, 0.12) 46%, transparent 72%);
+        animation: flow-b 19s ease-in-out infinite alternate;
+      }
+
+      .flow-blob--c {
+        right: 30%;
+        bottom: -7%;
+        width: min(34vw, 430px);
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(216, 180, 254, 0.2), rgba(165, 180, 252, 0.07) 52%, transparent 73%);
+        animation: flow-c 13s ease-in-out infinite alternate;
+      }
+
+      .flow-ribbon {
+        top: 34%;
+        right: 5%;
+        left: -4%;
+        height: 34%;
+        border-radius: 50%;
+        background: linear-gradient(105deg, transparent 6%, rgba(165, 180, 252, 0.04) 27%, rgba(216, 180, 254, 0.11) 48%, rgba(244, 114, 182, 0.06) 68%, transparent 91%);
+        filter: blur(34px);
+        transform: rotate(-8deg) skewX(-10deg);
+        animation: flow-ribbon 17s ease-in-out infinite alternate;
       }
 
       .hero-copy {
@@ -268,6 +336,8 @@
         display: block;
         margin-top: 6px;
         color: #fff;
+        font-size: 0.74em;
+        letter-spacing: -0.055em;
       }
 
       .intro {
@@ -339,6 +409,7 @@
 
       .visual-stage {
         position: relative;
+        z-index: 3;
         align-self: stretch;
         min-height: 600px;
       }
@@ -587,6 +658,163 @@
         color: #fff;
       }
 
+      .profile-section {
+        width: min(calc(100% - 56px), 1280px);
+        margin: 0 auto;
+        padding: 132px 0 142px;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        scroll-margin-top: 110px;
+      }
+
+      .profile-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
+        align-items: start;
+        gap: clamp(64px, 9vw, 132px);
+      }
+
+      .profile-title {
+        max-width: 680px;
+        margin: 0;
+        font-size: clamp(3rem, 5vw, 4.7rem);
+        line-height: 1.04;
+        letter-spacing: -0.06em;
+        font-weight: 600;
+      }
+
+      .profile-title em {
+        background: linear-gradient(100deg, var(--indigo), var(--purple) 52%, var(--pink));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-style: normal;
+      }
+
+      .profile-copy {
+        max-width: 570px;
+        margin: 30px 0 0;
+        color: #aaaab4;
+        font-size: 17px;
+        line-height: 1.82;
+      }
+
+      .profile-facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin: 42px 0 0;
+      }
+
+      .profile-fact {
+        min-width: 0;
+        padding: 17px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .profile-fact dt {
+        margin-bottom: 9px;
+        color: #686872;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.07em;
+      }
+
+      .profile-fact dd {
+        margin: 0;
+        color: #e6e6eb;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .resume-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .resume-block {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(26, 26, 31, 0.96), rgba(15, 15, 18, 0.96));
+      }
+
+      .resume-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 24px 26px;
+      }
+
+      .resume-heading h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 550;
+        letter-spacing: -0.03em;
+      }
+
+      .resume-heading span {
+        color: #74747e;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      .resume-list {
+        margin: 0;
+        padding: 0 26px;
+        list-style: none;
+      }
+
+      .resume-item {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 22px;
+        padding: 24px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .resume-period {
+        padding-top: 3px;
+        color: #85858f;
+        font-family: var(--mono);
+        font-size: 10px;
+        line-height: 1.55;
+      }
+
+      .resume-role h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 550;
+        letter-spacing: -0.02em;
+      }
+
+      .resume-role p {
+        margin: 0;
+        color: #85858f;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .resume-status {
+        min-width: max-content;
+        padding: 7px 9px;
+        border: 1px solid rgba(216, 180, 254, 0.22);
+        border-radius: 999px;
+        background: rgba(216, 180, 254, 0.08);
+        color: var(--purple);
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.04em;
+      }
+
+      .resume-block--education .resume-heading {
+        background: linear-gradient(100deg, rgba(165, 180, 252, 0.07), rgba(244, 114, 182, 0.04));
+      }
+
       .work-section {
         width: min(calc(100% - 56px), 1280px);
         margin: 0 auto;
@@ -661,6 +889,7 @@
         border-radius: 28px;
         background: #111114;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+        cursor: pointer;
         transition: transform 260ms cubic-bezier(.22, 1, .36, 1), border-color 260ms ease, box-shadow 260ms ease;
       }
 
@@ -668,6 +897,11 @@
         border-color: #4a4a54;
         box-shadow: 0 34px 80px rgba(0, 0, 0, 0.36);
         transform: translateY(-6px);
+      }
+
+      .project-card:focus-visible {
+        outline: 2px solid var(--purple);
+        outline-offset: 5px;
       }
 
       .project-card--featured {
@@ -868,6 +1102,200 @@
         font-size: 13px;
       }
 
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      .case-dialog {
+        width: min(calc(100% - 40px), 1080px);
+        max-width: none;
+        max-height: min(88dvh, 900px);
+        margin: auto;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 30px;
+        background: #101013;
+        color: var(--text);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
+      }
+
+      .case-dialog[open] {
+        animation: dialog-in 360ms cubic-bezier(.22, 1, .36, 1) both;
+      }
+
+      .case-dialog::backdrop {
+        background: rgba(3, 3, 5, 0.78);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .case-panel {
+        max-height: min(88dvh, 900px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+
+      .case-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 20px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(16, 16, 19, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .case-label {
+        margin: 0;
+        color: #8e8e98;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .case-close {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50%;
+        background: #1a1a1f;
+        color: #fff;
+        font: inherit;
+        font-size: 22px;
+        cursor: pointer;
+        transition: border-color 180ms ease, transform 180ms ease;
+      }
+
+      .case-close:hover,
+      .case-close:focus-visible {
+        border-color: rgba(255, 255, 255, 0.36);
+        transform: rotate(5deg);
+      }
+
+      .case-content {
+        padding: clamp(34px, 6vw, 72px);
+      }
+
+      .case-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.45fr);
+        align-items: end;
+        gap: 54px;
+      }
+
+      .case-kicker {
+        margin: 0 0 18px;
+        color: var(--purple);
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .case-title {
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 6.4rem);
+        line-height: 0.9;
+        letter-spacing: -0.075em;
+        font-weight: 650;
+      }
+
+      .case-intro {
+        margin: 0 0 4px;
+        color: #b1b1ba;
+        font-size: 17px;
+        line-height: 1.75;
+      }
+
+      .case-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 60px;
+      }
+
+      .case-metric {
+        min-height: 132px;
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        background: linear-gradient(145deg, rgba(30, 29, 37, 0.92), rgba(20, 20, 24, 0.92));
+      }
+
+      .case-metric strong {
+        display: block;
+        margin-bottom: 10px;
+        background: linear-gradient(95deg, var(--indigo), var(--purple), var(--pink));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        line-height: 1;
+        letter-spacing: -0.055em;
+      }
+
+      .case-metric span {
+        color: #85858f;
+        font-family: var(--mono);
+        font-size: 11px;
+      }
+
+      .case-story {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 38px;
+        margin-top: 66px;
+        padding-top: 38px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .case-story h3 {
+        margin: 0 0 16px;
+        color: #777781;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+
+      .case-story p {
+        margin: 0;
+        color: #c4c4cb;
+        font-size: 15px;
+        line-height: 1.78;
+      }
+
+      .case-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 50px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .case-tags li {
+        padding: 10px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        color: #a6a6af;
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      @keyframes dialog-in {
+        from { opacity: 0; transform: translateY(32px) scale(0.975); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
       .about-section,
       .process-section {
         width: min(calc(100% - 56px), 1280px);
@@ -953,7 +1381,7 @@
         grid-template-columns: minmax(0, 1fr) minmax(300px, 0.45fr);
         align-items: end;
         gap: 72px;
-        margin-bottom: 72px;
+        margin-bottom: 38px;
       }
 
       .process-title {
@@ -967,6 +1395,45 @@
         color: var(--muted);
         font-size: 16px;
         line-height: 1.75;
+      }
+
+      .process-ai-rail {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 22px;
+        margin-bottom: 30px;
+        padding: 15px 18px;
+        border: 1px solid rgba(216, 180, 254, 0.17);
+        border-radius: 18px;
+        background: linear-gradient(100deg, rgba(165, 180, 252, 0.065), rgba(216, 180, 254, 0.04), rgba(244, 114, 182, 0.035));
+      }
+
+      .process-ai-label {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: linear-gradient(95deg, var(--indigo), var(--purple), var(--pink));
+        color: #0a0a0c;
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+
+      .process-ai-flow {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        color: #aaaab4;
+        font-family: var(--mono);
+        font-size: 11px;
+      }
+
+      .process-ai-flow span:not(:last-child)::after {
+        content: "→";
+        margin-left: 12px;
+        color: #575762;
       }
 
       .process-list {
@@ -1022,6 +1489,29 @@
       .process-card:hover::after {
         opacity: 1;
         transform: scale(1);
+      }
+
+      .process-card--ai {
+        border-color: rgba(216, 180, 254, 0.19);
+        background: linear-gradient(145deg, rgba(32, 28, 39, 0.96), rgba(16, 16, 20, 0.96));
+      }
+
+      .process-card--ai::before {
+        color: var(--purple);
+      }
+
+      .process-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 6px 8px;
+        border: 1px solid rgba(216, 180, 254, 0.22);
+        border-radius: 999px;
+        background: rgba(216, 180, 254, 0.07);
+        color: var(--purple);
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.08em;
       }
 
       .process-card h3 {
@@ -1165,6 +1655,30 @@
         color: var(--purple);
       }
 
+      @keyframes flow-a {
+        0% { transform: translate3d(-5%, -3%, 0) scale(0.92); }
+        48% { transform: translate3d(16%, 8%, 0) scale(1.08); }
+        100% { transform: translate3d(4%, 20%, 0) scale(0.98); }
+      }
+
+      @keyframes flow-b {
+        0% { transform: translate3d(7%, 8%, 0) scale(1.03); }
+        52% { transform: translate3d(-17%, 17%, 0) scale(0.92); }
+        100% { transform: translate3d(-6%, -9%, 0) scale(1.1); }
+      }
+
+      @keyframes flow-c {
+        0% { transform: translate3d(-12%, 4%, 0) scale(0.88); }
+        50% { transform: translate3d(14%, -22%, 0) scale(1.14); }
+        100% { transform: translate3d(23%, -4%, 0) scale(0.96); }
+      }
+
+      @keyframes flow-ribbon {
+        0% { transform: translate3d(-4%, 7%, 0) rotate(-8deg) skewX(-10deg) scaleX(0.96); }
+        50% { transform: translate3d(7%, -8%, 0) rotate(-3deg) skewX(-5deg) scaleX(1.08); }
+        100% { transform: translate3d(2%, 9%, 0) rotate(-11deg) skewX(-12deg) scaleX(1.02); }
+      }
+
       @keyframes header-in {
         from { opacity: 0; transform: translate(-50%, -18px); }
         to { opacity: 1; transform: translate(-50%, 0); }
@@ -1259,6 +1773,16 @@
           padding: 104px 0 118px;
         }
 
+        .profile-section {
+          width: min(calc(100% - 40px), 680px);
+          padding: 112px 0 118px;
+        }
+
+        .profile-grid {
+          grid-template-columns: 1fr;
+          gap: 54px;
+        }
+
         .work-heading {
           grid-template-columns: 1fr;
           gap: 28px;
@@ -1306,7 +1830,7 @@
         }
 
         .process-heading {
-          margin-bottom: 48px;
+          margin-bottom: 30px;
         }
 
         .process-summary {
@@ -1324,6 +1848,11 @@
 
         .site-footer {
           width: min(calc(100% - 40px), 680px);
+        }
+
+        .case-heading {
+          grid-template-columns: 1fr;
+          gap: 28px;
         }
       }
 
@@ -1352,6 +1881,22 @@
           padding-top: 126px;
         }
 
+        .hero-flow {
+          inset: 70px -42vw -10px;
+          opacity: 0.62;
+          mask-image: radial-gradient(ellipse 92% 78% at 50% 40%, #000 28%, rgba(0, 0, 0, 0.72) 64%, transparent 100%);
+          -webkit-mask-image: radial-gradient(ellipse 92% 78% at 50% 40%, #000 28%, rgba(0, 0, 0, 0.72) 64%, transparent 100%);
+        }
+
+        .flow-blob--a,
+        .flow-blob--b {
+          width: 92vw;
+        }
+
+        .flow-blob--c {
+          width: 68vw;
+        }
+
         .eyebrow {
           margin-bottom: 20px;
           font-size: 11px;
@@ -1370,6 +1915,7 @@
 
         .plain-line {
           white-space: nowrap;
+          font-size: 0.64em;
         }
 
         .intro {
@@ -1426,6 +1972,47 @@
         .work-section {
           width: calc(100% - 30px);
           padding: 82px 0 90px;
+        }
+
+        .profile-section {
+          width: calc(100% - 30px);
+          padding: 88px 0 94px;
+        }
+
+        .profile-title {
+          font-size: clamp(2.6rem, 12vw, 3.25rem);
+        }
+
+        .profile-copy {
+          margin-top: 24px;
+          font-size: 16px;
+        }
+
+        .profile-facts {
+          grid-template-columns: 1fr;
+          margin-top: 32px;
+        }
+
+        .resume-block {
+          border-radius: 22px;
+        }
+
+        .resume-heading {
+          padding: 22px 20px;
+        }
+
+        .resume-list {
+          padding: 0 20px;
+        }
+
+        .resume-item {
+          grid-template-columns: 1fr auto;
+          gap: 12px 18px;
+          padding: 22px 0;
+        }
+
+        .resume-period {
+          grid-column: 1 / -1;
         }
 
         .work-heading {
@@ -1508,6 +2095,27 @@
           margin-top: 60px;
         }
 
+        .process-ai-rail {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          padding: 16px;
+        }
+
+        .process-ai-label {
+          width: max-content;
+        }
+
+        .process-ai-flow {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .process-ai-flow span:not(:last-child)::after {
+          content: "";
+          margin: 0;
+        }
+
         .contact-section {
           width: calc(100% - 30px);
           min-height: 510px;
@@ -1529,6 +2137,54 @@
         .site-footer > span:first-child {
           grid-column: 1 / -1;
           align-self: end;
+        }
+
+        .case-dialog {
+          width: 100%;
+          max-height: 94dvh;
+          margin: auto 0 0;
+          border-right: 0;
+          border-bottom: 0;
+          border-left: 0;
+          border-radius: 26px 26px 0 0;
+        }
+
+        .case-panel {
+          max-height: 94dvh;
+        }
+
+        .case-topbar {
+          padding: 16px 18px;
+        }
+
+        .case-content {
+          padding: 36px 20px 54px;
+        }
+
+        .case-title {
+          font-size: clamp(3rem, 18vw, 4.8rem);
+        }
+
+        .case-intro {
+          font-size: 16px;
+        }
+
+        .case-metrics,
+        .case-story {
+          grid-template-columns: 1fr;
+        }
+
+        .case-metrics {
+          margin-top: 42px;
+        }
+
+        .case-metric {
+          min-height: 0;
+        }
+
+        .case-story {
+          gap: 30px;
+          margin-top: 48px;
         }
       }
 
@@ -1566,14 +2222,20 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-flow" aria-hidden="true">
+          <span class="flow-blob flow-blob--a"></span>
+          <span class="flow-blob flow-blob--b"></span>
+          <span class="flow-blob flow-blob--c"></span>
+          <span class="flow-ribbon"></span>
+        </div>
         <section class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>独立设计师 · 新加坡</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>AI 驱动 · 全栈 UI/UX 设计师</p>
         <h1 id="hero-title">
-          <span class="gradient-line">设计数字体验</span>
-          <span class="plain-line">UI/UX 设计师</span>
+          <span class="gradient-line">用 AI 放大设计</span>
+          <span class="plain-line">全栈 UI/UX 设计师</span>
         </h1>
         <p class="intro">
-          我把复杂想法转化为清晰、鲜明的数字产品——用扎实的策略与自然顺手的界面，让体验既轻松易用，也令人难忘。
+          我把 AI 融入研究、策略、UI/UX、原型与交付的每一环，用更快的探索速度和更扎实的设计判断，把复杂问题转化为清晰、好用、可落地的产品体验。
         </p>
         <a class="primary-cta" href="#work">
           查看我的作品
@@ -1587,12 +2249,12 @@
             <span class="note-index">/01</span>
             <span class="note-pin" aria-hidden="true"></span>
           </div>
-          <h2>设计工具箱</h2>
+          <h2>全栈 UI/UX</h2>
           <ul>
-            <li>Figma 设计系统</li>
-            <li>产品策略</li>
-            <li>快速原型</li>
-            <li>动效细节</li>
+            <li>AI 研究与洞察</li>
+            <li>产品与体验策略</li>
+            <li>UI 与设计系统</li>
+            <li>原型、动效与交付</li>
           </ul>
         </article>
 
@@ -1612,7 +2274,7 @@
           <div class="portrait-meta">
             <div>
               <div class="portrait-name">林艾薇</div>
-              <div class="portrait-role">现接受精选合作</div>
+              <div class="portrait-role">AI 全栈 UI/UX 设计师</div>
             </div>
             <div class="portrait-badge" aria-hidden="true">✦</div>
           </div>
@@ -1625,10 +2287,10 @@
           </div>
           <h2>工作流程</h2>
           <ul>
-            <li>探索</li>
-            <li>定义</li>
-            <li>设计</li>
-            <li>交付</li>
+            <li>发现问题</li>
+            <li>定义体验</li>
+            <li>AI 共创方案</li>
+            <li>原型与交付</li>
           </ul>
         </article>
 
@@ -1639,19 +2301,99 @@
         </section>
       </section>
 
+      <section class="profile-section" id="about" aria-labelledby="profile-title">
+        <div class="profile-grid">
+          <div class="profile-intro">
+            <p class="section-kicker">关于我 · AI 全栈 UI/UX</p>
+            <h2 class="profile-title" id="profile-title">既看全局，也把每个界面<em>做到位</em>。</h2>
+            <p class="profile-copy">我是一名常驻新加坡的全栈 UI/UX 设计师，能够独立覆盖用户研究、产品策略、体验架构、界面视觉、交互原型与设计交付。我用 AI 加快资料归纳、方案探索和原型迭代，但方向判断、体验取舍与最终质量始终由我负责。</p>
+            <dl class="profile-facts">
+              <div class="profile-fact">
+                <dt>经验</dt>
+                <dd>6+ 年 UI/UX 设计</dd>
+              </div>
+              <div class="profile-fact">
+                <dt>所在地</dt>
+                <dd>新加坡 / 远程</dd>
+              </div>
+              <div class="profile-fact">
+                <dt>语言</dt>
+                <dd>中文 / 英语</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="resume-stack">
+            <section class="resume-block" aria-labelledby="experience-title">
+              <header class="resume-heading">
+                <h3 id="experience-title">工作经历</h3>
+                <span>2019—现在</span>
+              </header>
+              <ol class="resume-list">
+                <li class="resume-item">
+                  <span class="resume-period">2023—至今</span>
+                  <div class="resume-role">
+                    <h4>AI 全栈 UI/UX 设计师</h4>
+                    <p>独立合作 · 新加坡 / 远程</p>
+                  </div>
+                  <span class="resume-status">现在</span>
+                </li>
+                <li class="resume-item">
+                  <span class="resume-period">2021—2023</span>
+                  <div class="resume-role">
+                    <h4>高级产品设计师</h4>
+                    <p>数字产品团队 · 新加坡</p>
+                  </div>
+                </li>
+                <li class="resume-item">
+                  <span class="resume-period">2019—2021</span>
+                  <div class="resume-role">
+                    <h4>UI/UX 设计师</h4>
+                    <p>体验设计工作室 · 上海</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section class="resume-block resume-block--education" aria-labelledby="education-title">
+              <header class="resume-heading">
+                <h3 id="education-title">教育背景</h3>
+                <span>学历</span>
+              </header>
+              <ol class="resume-list">
+                <li class="resume-item">
+                  <span class="resume-period">2017—2019</span>
+                  <div class="resume-role">
+                    <h4>人机交互硕士</h4>
+                    <p>设计与科技方向</p>
+                  </div>
+                </li>
+                <li class="resume-item">
+                  <span class="resume-period">2013—2017</span>
+                  <div class="resume-role">
+                    <h4>视觉传达设计学士</h4>
+                    <p>数字媒体方向</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </div>
+      </section>
+
       <section class="work-section" id="work" aria-labelledby="work-title">
         <header class="work-heading">
           <div>
-            <p class="section-kicker">精选作品 · 2024—26</p>
-            <h2 class="work-title" id="work-title">一些已经<em>落地</em>的作品。</h2>
+            <p class="section-kicker">UI/UX 作品集 · 2024—26</p>
+            <h2 class="work-title" id="work-title">完整的 <em>UI/UX 方案</em>。</h2>
           </div>
           <p class="work-summary">
-            我与富有野心的团队并肩合作，厘清问题、搭建系统，并交付让用户愿意反复使用的体验。
+            每个案例都呈现从发现问题、定义策略、设计方案到原型验证与交付的完整过程；AI 贯穿其中，帮助我更快研究、探索和迭代。
           </p>
         </header>
 
         <div class="project-grid">
-          <article class="project-card project-card--featured" aria-labelledby="nova-title">
+          <article class="project-card project-card--featured" data-case="nova" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="case-dialog" aria-label="查看 NOVA 案例详情">
             <div class="project-preview project-preview--nova" aria-hidden="true">
               <div class="preview-meta">
                 <span>金融科技产品</span>
@@ -1669,17 +2411,17 @@
             </div>
             <div class="project-body">
               <div>
-                <p class="project-type">产品设计 · 2026</p>
+                <p class="project-type">全栈 UI/UX · 2026</p>
                 <h3 id="nova-title">让复杂的财务决策变得从容、清晰。</h3>
               </div>
               <div class="project-footer">
-                <span class="project-services">产品策略 · UX 架构 · 界面设计</span>
-                <span class="project-number">案例研究 / 01</span>
+                <span class="project-services">产品策略 · UX 架构 · UI 设计</span>
+                <span class="project-number">查看案例 / 01</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card" aria-labelledby="pulse-title">
+          <article class="project-card" data-case="pulse" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="case-dialog" aria-label="查看 PULSE 案例详情">
             <div class="project-preview project-preview--pulse" aria-hidden="true">
               <div class="preview-meta">
                 <span>医疗协作平台</span>
@@ -1696,16 +2438,16 @@
               </div>
             </div>
             <div class="project-body">
-              <p class="project-type">服务设计 · 2025</p>
+              <p class="project-type">服务体验设计 · 2025</p>
               <h3 id="pulse-title">让护理团队协作得更快，也更有人情味。</h3>
               <div class="project-footer">
-                <span class="project-services">用户研究 · 服务蓝图 · 产品体验</span>
-                <span class="project-number">/ 02</span>
+                <span class="project-services">用户研究 · 服务蓝图 · 原型验证</span>
+                <span class="project-number">查看案例 / 02</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card" aria-labelledby="atlas-title">
+          <article class="project-card" data-case="atlas" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="case-dialog" aria-label="查看 ATLAS 案例详情">
             <div class="project-preview project-preview--atlas" aria-hidden="true">
               <div class="preview-meta">
                 <span>设计系统</span>
@@ -1722,16 +2464,16 @@
               </div>
             </div>
             <div class="project-body">
-              <p class="project-type">系统设计 · 2024</p>
+              <p class="project-type">设计系统 · 2024</p>
               <h3 id="atlas-title">一套灵活的产品语言，适配不同市场。</h3>
               <div class="project-footer">
                 <span class="project-services">设计系统 · 治理规范 · 团队赋能</span>
-                <span class="project-number">/ 03</span>
+                <span class="project-number">查看案例 / 03</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card" aria-labelledby="echo-title">
+          <article class="project-card" data-case="echo" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="case-dialog" aria-label="查看 ECHO 案例详情">
             <div class="project-preview project-preview--echo" aria-hidden="true">
               <div class="preview-meta">
                 <span>智能服务平台</span>
@@ -1748,33 +2490,33 @@
               </div>
             </div>
             <div class="project-body">
-              <p class="project-type">AI 体验设计 · 2025</p>
+              <p class="project-type">AI 产品体验 · 2025</p>
               <h3 id="echo-title">让智能服务更自然，也更值得信任。</h3>
               <div class="project-footer">
                 <span class="project-services">体验策略 · 对话设计 · 交互原型</span>
-                <span class="project-number">/ 04</span>
+                <span class="project-number">查看案例 / 04</span>
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="about-section" id="about" aria-labelledby="about-title">
+      <section class="about-section" id="capabilities" aria-labelledby="capabilities-title">
         <div class="about-grid">
           <div>
-            <p class="section-kicker">关于 · 方法与视角</p>
-            <h2 class="about-title" id="about-title">把复杂问题，设计成<em>简单而不单调</em>的体验。</h2>
+            <p class="section-kicker">能力 · 全栈 UI/UX</p>
+            <h2 class="about-title" id="capabilities-title">一人贯穿，<em>全程可落地</em>。</h2>
           </div>
           <div class="about-details">
-            <p>我是一名关注产品逻辑与视觉表达的 UI/UX 设计师。从问题定义、体验架构到界面与动效，我会把每一个决定都拉回真实的使用场景。</p>
-            <p>我喜欢与产品、技术和业务团队一起工作，在清晰的策略与大胆的表达之间找到恰到好处的平衡。</p>
+            <p>我的“全栈”不是工具清单，而是能够理解业务与用户、搭建体验结构、完成界面与交互，并把方案推进到可实现、可交付的状态。</p>
+            <p>AI 是这套工作方法的加速层：它帮助我整理信息、扩展方案、生成原型；我负责判断方向、建立标准，并对最终体验负责。</p>
             <ul class="capability-list" aria-label="核心能力">
-              <li>产品策略 <span>/ 01</span></li>
-              <li>用户研究 <span>/ 02</span></li>
-              <li>体验设计 <span>/ 03</span></li>
-              <li>设计系统 <span>/ 04</span></li>
-              <li>交互原型 <span>/ 05</span></li>
-              <li>动效设计 <span>/ 06</span></li>
+              <li>用户研究与洞察 <span>/ 01</span></li>
+              <li>产品与体验策略 <span>/ 02</span></li>
+              <li>信息架构与流程 <span>/ 03</span></li>
+              <li>UI 视觉与设计系统 <span>/ 04</span></li>
+              <li>交互原型与动效 <span>/ 05</span></li>
+              <li>AI 协作与设计交付 <span>/ 06</span></li>
             </ul>
           </div>
         </div>
@@ -1783,28 +2525,40 @@
       <section class="process-section" id="process" aria-labelledby="process-title">
         <header class="process-heading">
           <div>
-            <p class="section-kicker">工作流程 · 从问题到产品</p>
-            <h2 class="process-title" id="process-title">从模糊想法，到<em>可用产品</em>。</h2>
+            <p class="section-kicker">方法 · AI 增强的 UI/UX 流程</p>
+            <h2 class="process-title" id="process-title">从真实问题，到<em>可交付体验</em>。</h2>
           </div>
-          <p class="process-summary">过程不是固定模板，而是一套围绕目标不断收敛的方法。每一步都有明确产出，也为下一步减少不确定性。</p>
+          <p class="process-summary">AI 贯穿每个阶段，负责加速归纳、扩展与生成；我负责理解场景、判断方向、验证方案，并把体验推进到真正可实现。</p>
         </header>
+
+        <div class="process-ai-rail" aria-label="AI 在工作流程中的应用">
+          <span class="process-ai-label">AI 加速层</span>
+          <div class="process-ai-flow">
+            <span>资料归纳</span>
+            <span>洞察聚类</span>
+            <span>方案扩展</span>
+            <span>原型与交付</span>
+          </div>
+        </div>
 
         <ol class="process-list">
           <li class="process-card">
-            <h3>探索</h3>
-            <p>通过访谈、数据与现有产品审视，理解用户、业务目标与真正需要解决的问题。</p>
+            <h3>发现</h3>
+            <p>通过访谈、数据与产品审视理解用户和业务。用 AI 整理材料、提取重复信号，再由我判断真正值得解决的问题。</p>
           </li>
           <li class="process-card">
             <h3>定义</h3>
-            <p>梳理关键场景与优先级，把分散的信息整理成清晰的体验方向与成功标准。</p>
+            <p>梳理关键场景、用户旅程与优先级，借助 AI 聚类和对比信息，把模糊需求收敛为清晰的体验方向与成功标准。</p>
           </li>
-          <li class="process-card">
-            <h3>设计</h3>
-            <p>从低保真结构推进到视觉与动效，用快速原型让团队更早看到、体验并验证方案。</p>
+          <li class="process-card process-card--ai">
+            <span class="process-badge">AI</span>
+            <h3>设计与验证</h3>
+            <p>同步推进信息架构、流程、文案、界面与动效，用 AI 扩展方案并快速生成原型，通过验证持续收敛体验。</p>
           </li>
-          <li class="process-card">
-            <h3>交付</h3>
-            <p>完善规范、状态与细节，和开发并肩落地，并根据真实反馈持续优化产品体验。</p>
+          <li class="process-card process-card--ai">
+            <span class="process-badge">AI</span>
+            <h3>原型与交付</h3>
+            <p>交付高保真原型、组件状态、设计规范与 AI 上下文文档，和开发共同验证实现，并根据真实反馈持续迭代。</p>
           </li>
         </ol>
       </section>
@@ -1812,8 +2566,8 @@
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-inner">
           <p class="section-kicker">现在 · 可合作</p>
-          <h2 class="contact-title" id="contact-title">有一个值得认真做好的<span>想法？</span></h2>
-          <p class="contact-copy">把项目背景、目标和时间计划发给我。我们可以从一次简短交流开始，看看怎样把它变成清晰、好用又有辨识度的产品。</p>
+          <h2 class="contact-title" id="contact-title">需要一位能从 0 到 1 推进的<span>UI/UX 设计师？</span></h2>
+          <p class="contact-copy">把项目背景、目标和时间计划发给我。我们可以从一次简短交流开始，看看如何用全栈 UI/UX 能力与 AI 协作，把想法更快推进成清晰、好用、可交付的产品体验。</p>
           <a class="contact-link" href="mailto:hello@avery.design">
             聊聊你的项目 <span aria-hidden="true">↗</span>
           </a>
@@ -1822,13 +2576,77 @@
     </main>
 
     <footer class="site-footer">
-      <span>© 2026 林艾薇 · 独立 UI/UX 设计师</span>
+      <span>© 2026 林艾薇 · AI 全栈 UI/UX 设计师</span>
       <a class="footer-email" href="mailto:hello@avery.design">hello@avery.design</a>
       <a class="back-to-top" href="#top">返回顶部 <span aria-hidden="true">↑</span></a>
     </footer>
 
+    <dialog class="case-dialog" id="case-dialog" aria-labelledby="case-title">
+      <div class="case-panel">
+        <header class="case-topbar">
+          <p class="case-label" id="case-label">UI/UX 案例 / 01</p>
+          <button class="case-close" type="button" aria-label="关闭案例详情">×</button>
+        </header>
+        <div class="case-content">
+          <div class="case-heading">
+            <div>
+              <p class="case-kicker" id="case-kicker">全栈 UI/UX · 2026</p>
+              <h2 class="case-title" id="case-title">NOVA</h2>
+            </div>
+            <p class="case-intro" id="case-intro"></p>
+          </div>
+          <div class="case-metrics" id="case-metrics" aria-label="项目成果"></div>
+          <div class="case-story">
+            <section>
+              <h3>设计挑战</h3>
+              <p id="case-challenge"></p>
+            </section>
+            <section>
+              <h3>设计过程</h3>
+              <p id="case-approach"></p>
+            </section>
+            <section>
+              <h3>结果与影响</h3>
+              <p id="case-outcome"></p>
+            </section>
+          </div>
+          <ul class="case-tags" id="case-tags" aria-label="项目能力标签"></ul>
+        </div>
+      </div>
+    </dialog>
+
     <script>
       (() => {
+        const hero = document.querySelector('.hero');
+        const heroFlow = document.querySelector('.hero-flow');
+        const canUseFlowParallax = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          && window.matchMedia('(pointer: fine)').matches;
+
+        if (hero && heroFlow && canUseFlowParallax) {
+          let pointerX = 0;
+          let pointerY = 0;
+          let flowFrame = null;
+
+          const renderFlowParallax = () => {
+            heroFlow.style.setProperty('--flow-x', `${pointerX}px`);
+            heroFlow.style.setProperty('--flow-y', `${pointerY}px`);
+            flowFrame = null;
+          };
+
+          hero.addEventListener('pointermove', (event) => {
+            const bounds = hero.getBoundingClientRect();
+            pointerX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 18;
+            pointerY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 14;
+            if (!flowFrame) flowFrame = window.requestAnimationFrame(renderFlowParallax);
+          });
+
+          hero.addEventListener('pointerleave', () => {
+            pointerX = 0;
+            pointerY = 0;
+            if (!flowFrame) flowFrame = window.requestAnimationFrame(renderFlowParallax);
+          });
+        }
+
         const cards = document.querySelectorAll('.draggable');
 
         cards.forEach((card) => {
@@ -1891,6 +2709,116 @@
             card.style.animation = 'none';
             applyPosition();
           });
+        });
+
+        const caseStudies = {
+          nova: {
+            label: 'UI/UX 案例 / 01',
+            kicker: '全栈 UI/UX · 2026',
+            title: 'NOVA',
+            intro: '重新设计个人财务决策体验，让用户在复杂信息中更快看懂风险、比较选项并安心完成选择。',
+            metrics: [['+28%', '关键流程完成率'], ['-37%', '平均决策耗时'], ['4.8 / 5', '可用性评分']],
+            challenge: '产品拥有大量专业数据，却缺少清晰的信息层级。用户常在关键决策前中断流程，团队也难以判断真正的阻碍发生在哪里。',
+            approach: '从决策路径而不是功能清单出发，用 AI 辅助归纳研究信号、扩展流程方案，再重组核心任务与风险信息层级，通过多轮原型测试调整比较和确认环节。',
+            outcome: '新版把复杂术语转化为可理解的提示与对比，减少往返操作，让关键流程的完成率和用户信心同步提升。',
+            tags: ['产品策略', 'UX 架构', 'UI 设计', 'AI 原型', '可用性测试'],
+          },
+          pulse: {
+            label: 'UI/UX 案例 / 02',
+            kicker: '服务体验设计 · 2025',
+            title: 'PULSE',
+            intro: '为跨岗位护理团队建立统一协作体验，让信息传递更及时，也让每一次交接更有人情味。',
+            metrics: [['2.4×', '协作处理速度'], ['-31%', '重复沟通'], ['18', '核心服务场景']],
+            challenge: '护理信息分散在多个工具和线下记录中，不同角色对任务优先级的理解不一致，交接过程容易遗漏关键信息。',
+            approach: '跟随真实班次梳理服务蓝图，用 AI 归纳访谈和观察记录，以事件时间线统一信息结构，再围绕高频协作场景设计任务、提醒和交接机制。',
+            outcome: '团队能在同一界面快速掌握患者状态与下一步行动，减少重复确认，把更多时间重新留给真实的护理工作。',
+            tags: ['用户研究', 'AI 洞察归纳', '服务蓝图', 'UI/UX 设计', '原型验证'],
+          },
+          atlas: {
+            label: 'UI/UX 案例 / 03',
+            kicker: '设计系统 · 2024',
+            title: 'ATLAS',
+            intro: '搭建一套能跨市场生长的产品语言，让不同团队共享标准，同时保留足够的本地灵活性。',
+            metrics: [['12', '落地市场'], ['-43%', '设计交付时间'], ['86%', '组件复用率']],
+            challenge: '产品快速扩展后，不同地区形成了各自的组件与交互习惯。体验逐渐割裂，设计和开发都在重复解决同一类问题。',
+            approach: '审计现有界面，用 AI 辅助识别重复模式与规范缺口，建立令牌、组件与治理三层结构，同时为多语言和市场差异预留扩展规则。',
+            outcome: '统一系统降低了重复设计和开发成本，新市场能够更快上线，品牌体验也在不同产品之间保持一致。',
+            tags: ['界面审计', 'AI 模式归纳', '设计系统', '组件规范', '治理机制'],
+          },
+          echo: {
+            label: 'UI/UX 案例 / 04',
+            kicker: 'AI 产品体验 · 2025',
+            title: 'ECHO',
+            intro: '把智能服务从黑盒回答变成可理解、可控制的协作体验，让效率提升与用户信任同时发生。',
+            metrics: [['-41%', '平均响应时间'], ['+22%', '问题解决率'], ['68%', '建议采纳率']],
+            challenge: '旧版智能服务只给出单一答案，用户无法理解依据，也缺少修改和回退的路径，效率提升并没有转化成持续使用。',
+            approach: '围绕信任建立对话结构，展示信息来源、置信提示和可编辑建议，并用渐进式确认替代一次性的自动执行。',
+            outcome: '用户能够看懂系统为什么这样建议，并在关键节点保持控制；响应更快的同时，建议采纳与问题解决率也得到提升。',
+            tags: ['体验策略', '对话设计', 'AI 交互', 'UI 设计', '快速原型'],
+          },
+        };
+
+        const dialog = document.querySelector('#case-dialog');
+        const closeButton = dialog.querySelector('.case-close');
+        const fields = {
+          label: dialog.querySelector('#case-label'),
+          kicker: dialog.querySelector('#case-kicker'),
+          title: dialog.querySelector('#case-title'),
+          intro: dialog.querySelector('#case-intro'),
+          metrics: dialog.querySelector('#case-metrics'),
+          challenge: dialog.querySelector('#case-challenge'),
+          approach: dialog.querySelector('#case-approach'),
+          outcome: dialog.querySelector('#case-outcome'),
+          tags: dialog.querySelector('#case-tags'),
+        };
+        let lastTrigger = null;
+
+        const openCase = (card) => {
+          const data = caseStudies[card.dataset.case];
+          if (!data) return;
+          lastTrigger = card;
+          fields.label.textContent = data.label;
+          fields.kicker.textContent = data.kicker;
+          fields.title.textContent = data.title;
+          fields.intro.textContent = data.intro;
+          fields.challenge.textContent = data.challenge;
+          fields.approach.textContent = data.approach;
+          fields.outcome.textContent = data.outcome;
+          fields.metrics.replaceChildren(...data.metrics.map(([value, label]) => {
+            const item = document.createElement('div');
+            item.className = 'case-metric';
+            const strong = document.createElement('strong');
+            const span = document.createElement('span');
+            strong.textContent = value;
+            span.textContent = label;
+            item.append(strong, span);
+            return item;
+          }));
+          fields.tags.replaceChildren(...data.tags.map((tag) => {
+            const item = document.createElement('li');
+            item.textContent = tag;
+            return item;
+          }));
+          document.body.classList.add('modal-open');
+          dialog.showModal();
+        };
+
+        document.querySelectorAll('.project-card[data-case]').forEach((card) => {
+          card.addEventListener('click', () => openCase(card));
+          card.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            openCase(card);
+          });
+        });
+
+        closeButton.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        dialog.addEventListener('close', () => {
+          document.body.classList.remove('modal-open');
+          lastTrigger?.focus();
         });
       })();
     </script>
