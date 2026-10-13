@@ -7,11 +7,10 @@
       name="description"
       content="杜天立是一名拥有 10 年经验的 AI 驱动全栈 UI/UX 设计师，覆盖用户研究、产品策略、体验架构、界面设计、交互原型与设计交付。"
     />
-    <meta name="theme-color" content="#070708" />
+    <meta name="theme-color" content="#050713" />
     <title>杜天立 — AI 全栈 UI/UX 设计师</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -19,20 +18,23 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070708'/%3E%3Cpath d='M15 14h16c12 0 20 7 20 18s-8 18-20 18H15V14Zm10 8v20h6c7 0 11-3.8 11-10s-4-10-11-10h-6Z' fill='%23D8B4FE'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050713'/%3E%3Cpath d='M15 14h16c12 0 20 7 20 18s-8 18-20 18H15V14Zm10 8v20h6c7 0 11-3.8 11-10s-4-10-11-10h-6Z' fill='%234F7DFF'/%3E%3C/svg%3E"
     />
     <style>
       :root {
         color-scheme: dark;
-        --bg: #070708;
-        --surface: #141417;
-        --surface-raised: #1b1b20;
-        --line: #303036;
+        --bg: #050713;
+        --surface: #101526;
+        --surface-raised: #171d33;
+        --line: #303858;
         --text: #ffffff;
-        --muted: #a7a7b0;
-        --indigo: #a5b4fc;
-        --purple: #d8b4fe;
-        --pink: #f472b6;
+        --muted: #a8afc4;
+        --accent-start: #9edcff;
+        --accent-mid: #4f7dff;
+        --accent-end: #7b5cff;
+        --indigo: var(--accent-start);
+        --purple: var(--accent-mid);
+        --pink: var(--accent-end);
         --display: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --mono: "SFMono-Regular", "PingFang SC", "Microsoft YaHei", Consolas, "Liberation Mono", Menlo, monospace;
       }
@@ -51,8 +53,8 @@
         min-height: 100dvh;
         overflow-x: hidden;
         background:
-          radial-gradient(circle at 68% 18%, rgba(216, 180, 254, 0.075), transparent 25rem),
-          radial-gradient(circle at 88% 80%, rgba(244, 114, 182, 0.045), transparent 28rem),
+          radial-gradient(circle at 68% 18%, rgba(79, 125, 255, 0.1), transparent 25rem),
+          radial-gradient(circle at 88% 80%, rgba(123, 92, 255, 0.065), transparent 28rem),
           var(--bg);
         color: var(--text);
         font-family: var(--display);
@@ -113,14 +115,19 @@
       .logo-mark {
         width: 28px;
         height: 28px;
-        display: grid;
-        place-items: center;
+        display: block;
+        overflow: hidden;
+        border: 1px solid rgba(158, 220, 255, 0.3);
         border-radius: 9px;
-        background: linear-gradient(135deg, var(--indigo), var(--purple) 54%, var(--pink));
-        color: #09090a;
-        font-family: var(--display);
-        font-size: 12px;
-        font-weight: 800;
+        background: #081127;
+        box-shadow: 0 0 22px rgba(79, 125, 255, 0.16);
+      }
+
+      .logo-mark img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
       }
 
       .nav-list {
@@ -249,7 +256,7 @@
         left: 3%;
         width: min(46vw, 620px);
         aspect-ratio: 1;
-        background: radial-gradient(circle at 44% 44%, rgba(165, 180, 252, 0.28), rgba(116, 98, 220, 0.14) 42%, transparent 72%);
+        background: radial-gradient(circle at 44% 44%, rgba(158, 220, 255, 0.3), rgba(62, 100, 230, 0.16) 42%, transparent 72%);
         translate: var(--layer-a-x) var(--layer-a-y);
         animation: flow-a 15s ease-in-out infinite alternate;
       }
@@ -259,7 +266,7 @@
         right: 0;
         width: min(50vw, 680px);
         aspect-ratio: 1;
-        background: radial-gradient(circle at 54% 48%, rgba(244, 114, 182, 0.21), rgba(216, 180, 254, 0.12) 46%, transparent 72%);
+        background: radial-gradient(circle at 54% 48%, rgba(123, 92, 255, 0.22), rgba(79, 125, 255, 0.14) 46%, transparent 72%);
         translate: var(--layer-b-x) var(--layer-b-y);
         animation: flow-b 19s ease-in-out infinite alternate;
       }
@@ -269,7 +276,7 @@
         bottom: -7%;
         width: min(34vw, 430px);
         aspect-ratio: 1;
-        background: radial-gradient(circle, rgba(216, 180, 254, 0.2), rgba(165, 180, 252, 0.07) 52%, transparent 73%);
+        background: radial-gradient(circle, rgba(79, 125, 255, 0.22), rgba(158, 220, 255, 0.08) 52%, transparent 73%);
         translate: var(--layer-c-x) var(--layer-c-y);
         animation: flow-c 13s ease-in-out infinite alternate;
       }
@@ -280,7 +287,7 @@
         left: -4%;
         height: 34%;
         border-radius: 50%;
-        background: linear-gradient(105deg, transparent 6%, rgba(165, 180, 252, 0.04) 27%, rgba(216, 180, 254, 0.11) 48%, rgba(244, 114, 182, 0.06) 68%, transparent 91%);
+        background: linear-gradient(105deg, transparent 6%, rgba(158, 220, 255, 0.05) 27%, rgba(79, 125, 255, 0.13) 48%, rgba(123, 92, 255, 0.08) 68%, transparent 91%);
         filter: blur(34px);
         translate: var(--ribbon-x) var(--ribbon-y);
         transform: rotate(-8deg) skewX(-10deg);
@@ -314,16 +321,16 @@
       .flow-cursor::before {
         inset: 0;
         background:
-          radial-gradient(circle at 35% 34%, rgba(165, 180, 252, 0.35), transparent 34%),
-          radial-gradient(circle at 66% 44%, rgba(216, 180, 254, 0.28), transparent 41%),
-          radial-gradient(circle at 47% 70%, rgba(244, 114, 182, 0.2), transparent 46%);
+          radial-gradient(circle at 35% 34%, rgba(158, 220, 255, 0.37), transparent 34%),
+          radial-gradient(circle at 66% 44%, rgba(79, 125, 255, 0.31), transparent 41%),
+          radial-gradient(circle at 47% 70%, rgba(123, 92, 255, 0.22), transparent 46%);
       }
 
       .flow-cursor::after {
         inset: 19%;
-        border: 1px solid rgba(216, 180, 254, 0.17);
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(165, 180, 252, 0.05) 36%, transparent 69%);
-        box-shadow: 0 0 72px rgba(165, 180, 252, 0.12);
+        border: 1px solid rgba(79, 125, 255, 0.2);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(158, 220, 255, 0.06) 36%, transparent 69%);
+        box-shadow: 0 0 72px rgba(79, 125, 255, 0.15);
       }
 
       .hero.is-pointer-active .flow-cursor {
@@ -364,7 +371,7 @@
         content: "";
         position: absolute;
         inset: -5px;
-        border: 1px solid rgba(216, 180, 254, 0.42);
+        border: 1px solid rgba(79, 125, 255, 0.46);
         border-radius: inherit;
         animation: pulse 2.2s ease-out infinite;
       }
@@ -440,7 +447,7 @@
       .primary-cta:hover,
       .primary-cta:focus-visible {
         transform: translateY(-3px);
-        box-shadow: 0 18px 44px rgba(216, 180, 254, 0.18);
+        box-shadow: 0 18px 44px rgba(79, 125, 255, 0.22);
       }
 
       .primary-cta:hover::before,
@@ -479,7 +486,7 @@
         width: 420px;
         height: 420px;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(165, 180, 252, 0.2), rgba(216, 180, 254, 0.14), rgba(244, 114, 182, 0.1));
+        background: linear-gradient(135deg, rgba(158, 220, 255, 0.22), rgba(79, 125, 255, 0.17), rgba(123, 92, 255, 0.13));
         filter: blur(70px);
         transform: translate(-50%, -48%);
       }
@@ -557,7 +564,7 @@
         height: 10px;
         border-radius: 50%;
         background: linear-gradient(135deg, var(--indigo), var(--pink));
-        box-shadow: 0 0 0 5px rgba(216, 180, 254, 0.075);
+        box-shadow: 0 0 0 5px rgba(79, 125, 255, 0.09);
       }
 
       .note-card h2 {
@@ -611,34 +618,34 @@
       }
 
       .portrait-card {
-        top: calc(50% - 248px);
+        top: calc(50% - 218px);
         left: 50%;
         z-index: 5;
-        width: 292px;
-        height: 438px;
+        width: 326px;
+        height: 378px;
         overflow: hidden;
-        border: 1px solid #3c3c43;
+        border: 1px solid rgba(125, 158, 255, 0.38);
         border-radius: 28px;
-        background: #17171a;
-        box-shadow: 0 36px 90px rgba(0, 0, 0, 0.6), 0 0 0 8px rgba(255, 255, 255, 0.025);
+        background: #071026;
+        box-shadow: 0 36px 90px rgba(0, 0, 0, 0.62), 0 0 0 8px rgba(79, 125, 255, 0.045);
         --rotation: 1.5deg;
         transform: translateX(-50%) rotate(var(--rotation));
         animation: portrait-up 900ms 440ms cubic-bezier(.2, .86, .24, 1) both;
       }
 
       .portrait-card:hover {
-        border-color: #5d5d67;
-        box-shadow: 0 42px 100px rgba(0, 0, 0, 0.7), 0 0 0 8px rgba(216, 180, 254, 0.035);
+        border-color: rgba(158, 220, 255, 0.62);
+        box-shadow: 0 42px 100px rgba(0, 0, 0, 0.7), 0 0 0 8px rgba(79, 125, 255, 0.07);
       }
 
       .portrait-card img {
         width: 100%;
         height: 100%;
         display: block;
-        object-fit: cover;
-        object-position: 50% 36%;
+        object-fit: contain;
+        object-position: 50% 42%;
         pointer-events: none;
-        filter: saturate(0.76) contrast(1.03) brightness(0.88);
+        filter: saturate(1.06) contrast(1.02);
       }
 
       .portrait-card::after {
@@ -646,8 +653,8 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(180deg, transparent 54%, rgba(5, 5, 6, 0.9) 100%),
-          linear-gradient(130deg, rgba(165, 180, 252, 0.06), transparent 45%, rgba(244, 114, 182, 0.08));
+          linear-gradient(180deg, transparent 55%, rgba(3, 6, 18, 0.93) 100%),
+          linear-gradient(130deg, rgba(158, 220, 255, 0.07), transparent 45%, rgba(123, 92, 255, 0.1));
         pointer-events: none;
       }
 
@@ -691,28 +698,6 @@
         background: rgba(12, 12, 14, 0.5);
         font-size: 13px;
         backdrop-filter: blur(8px);
-      }
-
-      .photo-credit {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        z-index: 3;
-        padding: 6px 9px;
-        border: 1px solid rgba(255, 255, 255, 0.13);
-        border-radius: 999px;
-        background: rgba(8, 8, 9, 0.42);
-        color: rgba(255, 255, 255, 0.72);
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.04em;
-        pointer-events: auto;
-        backdrop-filter: blur(8px);
-      }
-
-      .photo-credit:hover,
-      .photo-credit:focus-visible {
-        color: #fff;
       }
 
       .profile-section {
@@ -859,9 +844,9 @@
       .resume-status {
         min-width: max-content;
         padding: 7px 9px;
-        border: 1px solid rgba(216, 180, 254, 0.22);
+        border: 1px solid rgba(79, 125, 255, 0.24);
         border-radius: 999px;
-        background: rgba(216, 180, 254, 0.08);
+        background: rgba(79, 125, 255, 0.1);
         color: var(--purple);
         font-family: var(--mono);
         font-size: 9px;
@@ -869,7 +854,7 @@
       }
 
       .resume-block--education .resume-heading {
-        background: linear-gradient(100deg, rgba(165, 180, 252, 0.07), rgba(244, 114, 182, 0.04));
+        background: linear-gradient(100deg, rgba(158, 220, 255, 0.08), rgba(123, 92, 255, 0.06));
       }
 
       .work-section {
@@ -1006,29 +991,29 @@
 
       .project-preview--nova::before {
         background:
-          radial-gradient(circle at 76% 34%, rgba(244, 114, 182, 0.32), transparent 28%),
-          radial-gradient(circle at 32% 72%, rgba(165, 180, 252, 0.28), transparent 32%),
-          linear-gradient(135deg, #161824, #1c1521 68%, #17171b);
+          radial-gradient(circle at 76% 34%, rgba(123, 92, 255, 0.34), transparent 28%),
+          radial-gradient(circle at 32% 72%, rgba(158, 220, 255, 0.3), transparent 32%),
+          linear-gradient(135deg, #0d1428, #111735 68%, #0a0d1c);
       }
 
       .project-preview--pulse::before {
         background:
-          radial-gradient(circle at 18% 18%, rgba(216, 180, 254, 0.25), transparent 30%),
-          radial-gradient(circle at 78% 76%, rgba(244, 114, 182, 0.25), transparent 34%),
-          linear-gradient(150deg, #1c1721, #17171b 62%);
+          radial-gradient(circle at 18% 18%, rgba(79, 125, 255, 0.28), transparent 30%),
+          radial-gradient(circle at 78% 76%, rgba(123, 92, 255, 0.27), transparent 34%),
+          linear-gradient(150deg, #11172b, #0b0e1d 62%);
       }
 
       .project-preview--atlas::before {
         background:
-          radial-gradient(circle at 78% 20%, rgba(165, 180, 252, 0.3), transparent 30%),
-          linear-gradient(140deg, #141720, #19171f 72%);
+          radial-gradient(circle at 78% 20%, rgba(158, 220, 255, 0.32), transparent 30%),
+          linear-gradient(140deg, #0d1426, #12162b 72%);
       }
 
       .project-preview--echo::before {
         background:
-          radial-gradient(circle at 24% 76%, rgba(244, 114, 182, 0.3), transparent 31%),
-          radial-gradient(circle at 82% 24%, rgba(165, 180, 252, 0.24), transparent 27%),
-          linear-gradient(145deg, #1d151d, #15171f 70%);
+          radial-gradient(circle at 24% 76%, rgba(123, 92, 255, 0.32), transparent 31%),
+          radial-gradient(circle at 82% 24%, rgba(158, 220, 255, 0.27), transparent 27%),
+          linear-gradient(145deg, #10142c, #0b1021 70%);
       }
 
       .preview-meta {
@@ -1098,7 +1083,7 @@
       .signal-line {
         height: 8px;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(165, 180, 252, 0.92), rgba(216, 180, 254, 0.35), transparent);
+        background: linear-gradient(90deg, rgba(158, 220, 255, 0.94), rgba(79, 125, 255, 0.4), transparent);
         transform-origin: left;
       }
 
@@ -1461,9 +1446,9 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 30px;
         background:
-          radial-gradient(circle at 12% 0%, rgba(165, 180, 252, 0.08), transparent 32%),
-          radial-gradient(circle at 88% 100%, rgba(244, 114, 182, 0.07), transparent 30%),
-          rgba(12, 12, 15, 0.76);
+          radial-gradient(circle at 12% 0%, rgba(158, 220, 255, 0.1), transparent 32%),
+          radial-gradient(circle at 88% 100%, rgba(123, 92, 255, 0.09), transparent 30%),
+          rgba(7, 10, 23, 0.82);
       }
 
       .process-board::before {
@@ -1529,15 +1514,15 @@
       }
 
       .process-role--ai {
-        border-color: rgba(216, 180, 254, 0.3);
+        border-color: rgba(79, 125, 255, 0.34);
         color: var(--purple);
-        background: rgba(216, 180, 254, 0.075);
+        background: rgba(79, 125, 255, 0.09);
       }
 
       .process-role--team {
-        border-color: rgba(244, 114, 182, 0.25);
-        color: #f5a7cc;
-        background: rgba(244, 114, 182, 0.06);
+        border-color: rgba(123, 92, 255, 0.3);
+        color: #a996ff;
+        background: rgba(123, 92, 255, 0.09);
       }
 
       .process-list {
@@ -1582,14 +1567,14 @@
         width: 240px;
         height: 240px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(216, 180, 254, 0.2), rgba(244, 114, 182, 0.03) 58%, transparent 70%);
+        background: radial-gradient(circle, rgba(79, 125, 255, 0.22), rgba(123, 92, 255, 0.05) 58%, transparent 70%);
         opacity: 0;
         transform: scale(0.7);
         transition: opacity 260ms ease, transform 420ms cubic-bezier(.22, 1, .36, 1);
       }
 
       .process-card:hover {
-        border-color: rgba(216, 180, 254, 0.34);
+        border-color: rgba(79, 125, 255, 0.38);
         transform: translateY(-5px);
       }
 
@@ -1600,7 +1585,7 @@
 
       .process-card:nth-child(3),
       .process-card:nth-child(4) {
-        border-color: rgba(216, 180, 254, 0.17);
+        border-color: rgba(79, 125, 255, 0.21);
       }
 
       .process-card:nth-child(3)::before,
@@ -1682,7 +1667,7 @@
         content: "CHECK";
         padding: 4px 6px;
         border-radius: 999px;
-        background: rgba(216, 180, 254, 0.08);
+        background: rgba(79, 125, 255, 0.1);
         color: var(--purple);
         font-size: 8px;
       }
@@ -1707,7 +1692,7 @@
         right: 54px;
         left: 54px;
         height: 1px;
-        background: linear-gradient(90deg, rgba(165, 180, 252, 0.25), rgba(216, 180, 254, 0.45), rgba(244, 114, 182, 0.25));
+        background: linear-gradient(90deg, rgba(158, 220, 255, 0.3), rgba(79, 125, 255, 0.5), rgba(123, 92, 255, 0.3));
       }
 
       .process-track-dot {
@@ -1719,7 +1704,7 @@
         border: 2px solid #17171b;
         border-radius: 50%;
         background: var(--purple);
-        box-shadow: 0 0 0 1px rgba(216, 180, 254, 0.3);
+        box-shadow: 0 0 0 1px rgba(79, 125, 255, 0.34);
       }
 
       .contact-section {
@@ -1733,9 +1718,9 @@
         border: 1px solid rgba(255, 255, 255, 0.13);
         border-radius: 36px;
         background:
-          radial-gradient(circle at 22% 84%, rgba(165, 180, 252, 0.2), transparent 31%),
-          radial-gradient(circle at 80% 16%, rgba(244, 114, 182, 0.2), transparent 28%),
-          linear-gradient(135deg, #17171d, #111114 55%, #19131a);
+          radial-gradient(circle at 22% 84%, rgba(158, 220, 255, 0.22), transparent 31%),
+          radial-gradient(circle at 80% 16%, rgba(123, 92, 255, 0.23), transparent 28%),
+          linear-gradient(135deg, #10172a, #090d1c 55%, #10102a);
         scroll-margin-top: 110px;
       }
 
@@ -1837,8 +1822,8 @@
 
       .contact-copy-button:hover,
       .contact-copy-button:focus-visible {
-        border-color: rgba(216, 180, 254, 0.35);
-        background: rgba(216, 180, 254, 0.07);
+        border-color: rgba(79, 125, 255, 0.4);
+        background: rgba(79, 125, 255, 0.09);
       }
 
       .contact-link span {
@@ -1879,8 +1864,8 @@
 
       .contact-detail--link:hover,
       .contact-detail--link:focus-within {
-        border-color: rgba(216, 180, 254, 0.3);
-        background: rgba(216, 180, 254, 0.055);
+        border-color: rgba(79, 125, 255, 0.34);
+        background: rgba(79, 125, 255, 0.075);
         transform: translateX(4px);
       }
 
@@ -2221,9 +2206,9 @@
         }
 
         .portrait-card {
-          top: 42px;
-          width: min(68vw, 276px);
-          height: min(102vw, 414px);
+          top: 50px;
+          width: min(78vw, 306px);
+          height: min(88vw, 348px);
         }
 
         .note-card {
@@ -2527,7 +2512,7 @@
 
     <header class="site-header" aria-label="主导航">
       <a class="logo" href="#top" aria-label="杜天立，返回首页">
-        <span class="logo-mark">D</span>
+        <span class="logo-mark"><img src="assets/dutianli-avatar.png" alt="" /></span>
         <span class="logo-word">天立 / 26</span>
       </a>
 
@@ -2583,19 +2568,12 @@
           </ul>
         </article>
 
-        <article class="draggable portrait-card" data-centered="true" data-rotation="1.5" tabindex="0" aria-label="杜天立的肖像，可拖动调整位置。">
+        <article class="draggable portrait-card" data-centered="true" data-rotation="1.5" tabindex="0" aria-label="杜天立的品牌头像，可拖动调整位置。">
           <img
-            src="https://images.unsplash.com/photo-1772987273687-4866382c146f?auto=format&amp;fit=crop&amp;w=1000&amp;q=88"
-            alt="创意设计师的暗调棚拍肖像"
+            src="assets/dutianli-avatar.png"
+            alt="杜天立的蓝紫渐变 D 字品牌头像"
             draggable="false"
           />
-          <a
-            class="photo-credit"
-            href="https://unsplash.com/photos/a-young-woman-in-a-dark-studio-setting-gWSL87anl9M"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Michael Guertin 在 Unsplash 发布的肖像照片"
-          >图片来源 ↗</a>
           <div class="portrait-meta">
             <div>
               <div class="portrait-name">杜天立</div>
