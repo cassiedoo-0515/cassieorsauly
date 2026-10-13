@@ -11,6 +11,7 @@
     <title>杜天立 — AI 全栈 UI/UX 设计师</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -618,11 +619,11 @@
       }
 
       .portrait-card {
-        top: calc(50% - 218px);
+        top: calc(50% - 248px);
         left: 50%;
         z-index: 5;
-        width: 326px;
-        height: 378px;
+        width: 292px;
+        height: 438px;
         overflow: hidden;
         border: 1px solid rgba(125, 158, 255, 0.38);
         border-radius: 28px;
@@ -642,10 +643,10 @@
         width: 100%;
         height: 100%;
         display: block;
-        object-fit: contain;
-        object-position: 50% 42%;
+        object-fit: cover;
+        object-position: 50% 36%;
         pointer-events: none;
-        filter: saturate(1.06) contrast(1.02);
+        filter: saturate(0.76) contrast(1.03) brightness(0.88);
       }
 
       .portrait-card::after {
@@ -698,6 +699,28 @@
         background: rgba(12, 12, 14, 0.5);
         font-size: 13px;
         backdrop-filter: blur(8px);
+      }
+
+      .photo-credit {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 3;
+        padding: 6px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 999px;
+        background: rgba(8, 8, 9, 0.42);
+        color: rgba(255, 255, 255, 0.72);
+        font-family: var(--mono);
+        font-size: 8px;
+        letter-spacing: 0.04em;
+        pointer-events: auto;
+        backdrop-filter: blur(8px);
+      }
+
+      .photo-credit:hover,
+      .photo-credit:focus-visible {
+        color: #fff;
       }
 
       .profile-section {
@@ -2206,9 +2229,9 @@
         }
 
         .portrait-card {
-          top: 50px;
-          width: min(78vw, 306px);
-          height: min(88vw, 348px);
+          top: 42px;
+          width: min(68vw, 276px);
+          height: min(102vw, 414px);
         }
 
         .note-card {
@@ -2568,12 +2591,19 @@
           </ul>
         </article>
 
-        <article class="draggable portrait-card" data-centered="true" data-rotation="1.5" tabindex="0" aria-label="杜天立的品牌头像，可拖动调整位置。">
+        <article class="draggable portrait-card" data-centered="true" data-rotation="1.5" tabindex="0" aria-label="杜天立的肖像，可拖动调整位置。">
           <img
-            src="assets/dutianli-avatar.png"
-            alt="杜天立的蓝紫渐变 D 字品牌头像"
+            src="https://images.unsplash.com/photo-1772987273687-4866382c146f?auto=format&amp;fit=crop&amp;w=1000&amp;q=88"
+            alt="创意设计师的暗调棚拍肖像"
             draggable="false"
           />
+          <a
+            class="photo-credit"
+            href="https://unsplash.com/photos/a-young-woman-in-a-dark-studio-setting-gWSL87anl9M"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Michael Guertin 在 Unsplash 发布的肖像照片"
+          >图片来源 ↗</a>
           <div class="portrait-meta">
             <div>
               <div class="portrait-name">杜天立</div>
